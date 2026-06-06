@@ -1,0 +1,11 @@
+services:
+  lolicup:
+    build: .
+    container_name: lolicup
+    restart: unless-stopped
+    networks:
+      - proyectitos
+
+networks:
+  proyectitos:
+    external: true

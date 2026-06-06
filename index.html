@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LoliCup — Copa menstrual de silicona grado médico. 12 horas de protección, sin químicos, pago único. Envío gratis a todo Honduras.">
+<title>LoliCup — Copa Menstrual</title>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #C45C6E;
+    --rose-deep: #A34455;
+    --rose-pale: #FDF2F4;
+    --sage: #5C8F7A;
+    --sage-deep: #3D6B58;
+    --sage-pale: #EEF5F1;
+    --bg: #FAFAFA;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --text-secondary: #5C5C5C;
+    --text-tertiary: #949494;
+    --border: #EBEBEB;
+    --border-hover: #D4D4D4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ══════════════════════════════════════
+     MOBILE-FIRST — base styles = mobile
+     ══════════════════════════════════════ */
+
+  html { scroll-behavior: smooth; font-size: 15px; }
+  body {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, .display {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  h1 { font-size: 2.2rem; line-height: 1.1; }
+  h2 { font-size: 1.6rem; line-height: 1.2; }
+  h3 { font-size: 1.05rem; line-height: 1.3; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+  /* Buttons — full width on mobile */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 0.875rem; font-weight: 600;
+    letter-spacing: -0.01em;
+    padding: 0.9rem 1.5rem; width: 100%;
+    border: 0; cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none; text-align: center;
+  }
+  .btn-primary { background: var(--rose); color: #fff; }
+  .btn-primary:hover { background: var(--rose-deep); }
+  .btn-outline { background: transparent; color: var(--rose); border: 1.5px solid var(--rose); }
+  .btn-outline:hover { background: var(--rose); color: #fff; }
+  .btn-large { font-size: 1rem; padding: 1rem 2rem; }
+  .btn-white { background: #fff; color: var(--rose); }
+  .btn-white:hover { background: #F5F5F5; }
+
+  /* Nav — hamburger visible, desktop links hidden */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0.85rem 0;
+    transition: all 0.25s ease;
+  }
+  .nav.scrolled {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.6rem 0;
+  }
+  .nav .container { display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.25rem; font-weight: 600;
+    letter-spacing: -0.02em; color: var(--text);
+  }
+  .nav-logo span { color: var(--rose); }
+  .nav-links { display: none; }
+  .hamburger { display: flex; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: 0; padding: 6px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); transition: all 0.3s; }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+  .mobile-menu {
+    display: none; position: fixed; inset: 0;
+    background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
+    z-index: 99;
+    flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+  }
+  .mobile-menu.active { display: flex; }
+  .mobile-menu a {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.5rem; font-weight: 500;
+    letter-spacing: -0.02em; text-decoration: none; color: var(--text);
+  }
+
+  /* Section */
+  .section { padding: 3.5rem 0; }
+  .section-tag {
+    display: inline-block;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 0.6875rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--rose); margin-bottom: 0.75rem;
+    background: var(--rose-pale); padding: 0.3rem 0.8rem;
+  }
+  .section-subtitle {
+    font-size: 0.95rem; color: var(--text-secondary);
+    max-width: 100%; margin-top: 0.5rem;
+  }
+
+  /* Hero — stacked, panel first, centered text */
+  .hero {
+    display: flex; align-items: center;
+    padding: 4.5rem 0 3.5rem;
+    background: linear-gradient(180deg, #FEFBFB 0%, #FDF6F8 50%, #F8F4F6 100%);
+  }
+  .hero-grid {
+    display: flex; flex-direction: column;
+    gap: 1.5rem; align-items: center; text-align: center;
+  }
+  /* ══════ IMAGE SQUARES — object-fit: cover, never stretch ══════ */
+  .img-square {
+    position: relative; overflow: hidden;
+    border-radius: 14px;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease, filter 0.3s ease;
+    margin: 0 auto;
+  }
+  .img-square img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Hero panel */
+  .hero-visual { order: -1; }
+  .hero-panel {
+    width: 100%; max-width: 420px;
+    margin: 0 auto;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeInUp 0.7s ease-out forwards;
+  }
+  .hero-panel object,
+  .hero-panel img {
+    width: 100%; height: auto;
+    display: block;
+  }
+
+  /* Feature image */
+  .feature-img-wrap { width: 220px; height: 220px; opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .feature-img-wrap.visible { opacity: 1; transform: translateY(0); }
+  .feature-img-wrap:hover { transform: translateY(-2px); filter: drop-shadow(0 14px 30px rgba(0,0,0,0.18)); }
+
+  /* Testimonial image */
+  .testimonial-visual-wrapper {
+    margin: 2.5rem auto 1.5rem;
+    text-align: center;
+  }
+  .testimonial-img-wrap { width: 180px; height: 180px; opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .testimonial-img-wrap.visible { opacity: 1; transform: translateY(0); }
+  .testimonial-img-wrap:hover { transform: translateY(-2px); filter: drop-shadow(0 14px 30px rgba(0,0,0,0.18)); }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out both;
+  }
+  .hero-content h1 { margin-bottom: 0.75rem; }
+  .hero-content h1 em { font-style: normal; color: var(--rose); position: relative; }
+  .hero-content h1 em::after {
+    content: ''; position: absolute; bottom: 2px; left: 0; right: 0;
+    height: 3px; background: var(--rose-pale); z-index: -1;
+  }
+  .hero-desc {
+    font-size: 0.95rem; color: var(--text-secondary);
+    line-height: 1.65; margin-bottom: 1.25rem;
+  }
+  .hero-meta { display: flex; gap: 1rem; margin-bottom: 1.25rem; justify-content: center; flex-wrap: wrap; }
+  .hero-stat { text-align: center; }
+  .hero-stat-number {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.6rem; font-weight: 600; letter-spacing: -0.03em;
+    color: var(--rose); line-height: 1;
+  }
+  .hero-stat-label { font-size: 0.65rem; color: var(--text-tertiary); font-weight: 500; margin-top: 0.15rem; }
+  .hero-actions { display: flex; flex-direction: column; gap: 0.6rem; align-items: stretch; width: 100%; }
+  .hero-actions .btn { width: 100%; }
+  .hero-price-tag {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.1rem; font-weight: 600; text-align: center;
+    color: var(--sage-deep); padding: 0.5rem 1rem;
+    background: var(--sage-pale);
+  }
+
+  /* Benefits — single column */
+  .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  .benefit-card {
+    background: var(--surface); padding: 1.5rem 1.25rem;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .benefit-card:active { border-color: var(--border-hover); }
+  .benefit-icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+  .benefit-card h3 { margin-bottom: 0.35rem; font-weight: 500; }
+  .benefit-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Feature — stacked, visual first */
+  .feature-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+  .feature-visual { order: -1; display: flex; justify-content: center; }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .feature-list li {
+    display: flex; gap: 0.6rem; align-items: flex-start;
+    font-size: 0.875rem; line-height: 1.5;
+    padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+  }
+  .feature-list li::before {
+    content: ''; width: 4px; height: 4px; flex-shrink: 0;
+    background: var(--sage); margin-top: 0.45rem;
+  }
+  .feature-list li strong { display: block; color: var(--text); font-weight: 600; margin-bottom: 0.1rem; }
+
+  /* Steps — single column */
+  .steps-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  .step-card {
+    background: var(--surface); padding: 1.8rem 1.5rem;
+    border: 1px solid var(--border); text-align: center;
+  }
+  .step-num {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 3rem; font-weight: 600;
+    color: var(--rose-pale); line-height: 1; margin-bottom: -0.25rem;
+  }
+  .step-card h3 { margin-bottom: 0.35rem; }
+  .step-card p { font-size: 0.85rem; color: var(--text-secondary); }
+
+  /* Comparison — scrollable */
+  .compare-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); }
+  .compare-table th, .compare-table td { padding: 0.65rem 0.75rem; text-align: left; font-size: 0.75rem; }
+  .compare-table th {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text-tertiary); background: var(--bg); border-bottom: 1px solid var(--border);
+  }
+  .compare-table td { border-bottom: 1px solid var(--border); }
+  .compare-highlight { background: var(--rose-pale); }
+  .compare-check { color: var(--sage); font-weight: 700; }
+  .compare-x { color: #C4A0A8; }
+
+  /* Testimonials — single column */
+  .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  .testimonial-card { background: var(--surface); padding: 1.5rem; border: 1px solid var(--border); }
+  .testimonial-card .stars { color: var(--rose); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 0.75rem; }
+  .testimonial-card p { font-style: italic; font-size: 0.875rem; line-height: 1.55; color: var(--text); margin-bottom: 0.75rem; }
+  .testimonial-card .author { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; color: var(--text-tertiary); text-transform: uppercase; }
+
+  /* FAQ */
+  .faq-list { max-width: 100%; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%; background: none; border: 0;
+    text-align: left; cursor: pointer;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    padding: 1rem 0;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--text); transition: color 0.15s;
+  }
+  .faq-q:hover { color: var(--rose); }
+  .faq-q::after { content: '+'; font-size: 1.2rem; font-weight: 300; color: var(--rose); }
+  .faq-item.open .faq-q::after { content: '−'; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55; }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 1rem; }
+
+  /* Warranty */
+  .warranty-seal {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 90px; height: 90px;
+    border: 3px solid var(--sage);
+    font-family: 'Clash Display', sans-serif;
+    text-align: center; line-height: 1.2;
+  }
+  .warranty-features { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; margin-top: 1rem; }
+  .warranty-feature { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); }
+
+  /* CTA */
+  .cta-section { background: var(--rose); color: #fff; text-align: center; padding: 3.5rem 0; }
+  .cta-section h2 { color: #fff; margin-bottom: 0.5rem; }
+  .cta-section p { font-size: 0.95rem; opacity: 0.9; margin: 0 auto 1.5rem; }
+  .cta-price {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 2.4rem; font-weight: 600;
+    letter-spacing: -0.03em; margin-bottom: 1.25rem;
+  }
+  .cta-note { font-size: 0.75rem; opacity: 0.65; margin-top: 0.75rem; }
+
+  /* Footer */
+  .footer { background: #1A1A1A; color: #999; padding: 2.5rem 0 1.25rem; font-size: 0.8rem; }
+  .footer-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1.5rem; text-align: center; }
+  .footer-brand { font-family: 'Clash Display', sans-serif; font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
+  .footer-brand span { color: var(--rose); }
+  .footer-links { display: flex; gap: 1.25rem; list-style: none; flex-wrap: wrap; justify-content: center; }
+  .footer-links a { font-size: 0.75rem; font-weight: 500; color: #999; text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid #2A2A2A; padding-top: 1rem; font-size: 0.7rem; color: #666; text-align: center; }
+
+  /* WhatsApp float — smaller on mobile */
+  .wa-float {
+    position: fixed; bottom: 1rem; right: 1rem; z-index: 200;
+    width: 46px; height: 46px;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+    transition: transform 0.15s; text-decoration: none;
+  }
+  .wa-float:active { transform: scale(1.05); }
+  .wa-float svg { width: 22px; height: 22px; fill: #fff; }
+
+  /* Free shipping pill */
+  .ship-pill {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    background: var(--sage-pale); color: var(--sage-deep);
+    font-size: 0.6875rem; font-weight: 700;
+    padding: 0.3rem 0.75rem; margin-bottom: 0.6rem;
+  }
+
+  /* ══════════════════════════════════════
+     TABLET — 600px+
+     ══════════════════════════════════════ */
+  @media (min-width: 600px) {
+    html { font-size: 16px; }
+    .container { padding: 0 1.5rem; }
+
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+
+    .section { padding: 4.5rem 0; }
+
+    .hero { padding: 5rem 0 4rem; }
+    .hero-panel { max-width: 520px; }
+    .feature-img-wrap { width: 300px; height: 300px; }
+    .testimonial-visual-wrapper { margin: 2.5rem auto 1rem; }
+    .testimonial-img-wrap { width: 240px; height: 240px; }
+    .hero-actions { flex-direction: row; width: auto; }
+    .hero-actions .btn { width: auto; }
+    .hero-price-tag { text-align: left; }
+    .hero-stat-number { font-size: 2rem; }
+
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    .cta-section { padding: 4.5rem 0; }
+    .cta-price { font-size: 3rem; }
+
+    .footer-grid { flex-direction: row; justify-content: space-between; text-align: left; }
+  }
+
+  /* ══════════════════════════════════════
+     DESKTOP — 900px+
+     ══════════════════════════════════════ */
+  @media (min-width: 900px) {
+    /* Show desktop nav, hide hamburger */
+    .nav-links {
+      display: flex; gap: 2rem; align-items: center; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8125rem; font-weight: 500;
+      color: var(--text-secondary); text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .hamburger { display: none; }
+
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.4rem; }
+    h3 { font-size: 1.2rem; }
+
+    .btn { width: auto; }
+    .section { padding: 6rem 0; }
+    .section-subtitle { max-width: 520px; font-size: 1.05rem; }
+
+    /* Hero side-by-side */
+    .hero { min-height: auto; padding: 6rem 0 4rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3rem; text-align: left; }
+    .hero-content { order: 0; }
+    .hero-visual { order: 0; }
+    .hero-panel { max-width: none; }
+    .feature-img-wrap { width: 380px; height: 380px; }
+    .testimonial-visual-wrapper { margin: 3rem auto 1.5rem; }
+    .testimonial-img-wrap { width: 280px; height: 280px; }
+    .hero-desc { font-size: 1.05rem; max-width: 440px; }
+    .hero-meta { justify-content: flex-start; gap: 1.5rem; }
+    .hero-actions { flex-direction: row; }
+    .hero-stat { text-align: left; }
+
+    /* Grids expand */
+    .benefits-grid { grid-template-columns: repeat(4, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .benefit-card { padding: 2rem 1.5rem; }
+    .benefit-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .benefit-icon { font-size: 1.8rem; }
+    .benefit-card p { font-size: 0.9rem; }
+
+    /* Feature side-by-side */
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .feature-visual { order: 0; display: flex; justify-content: flex-end; }
+    .feature-list li { font-size: 0.95rem; padding: 0.75rem 0; }
+
+    .steps-grid { gap: 1.5rem; }
+    .step-card { padding: 2.5rem 2rem; }
+    .step-num { font-size: 4rem; }
+    .step-card p { font-size: 0.9rem; }
+
+    .compare-table th, .compare-table td { padding: 1rem 1.5rem; font-size: 0.9rem; }
+    .compare-table th { font-size: 0.6875rem; }
+
+    .testimonial-card { padding: 2rem; }
+    .testimonial-card p { font-size: 0.95rem; }
+    .testimonial-card .stars { font-size: 0.85rem; }
+    .testimonial-card .author { font-size: 0.75rem; }
+
+    .faq-list { max-width: 720px; }
+    .faq-q { font-size: 1rem; padding: 1.2rem 0; }
+
+    .warranty-seal { width: 110px; height: 110px; }
+    .warranty-features { flex-direction: row; gap: 2rem; }
+    .warranty-feature { font-size: 0.9rem; }
+
+    .cta-section { padding: 5rem 0; }
+    .cta-section p { font-size: 1.05rem; }
+    .cta-price { font-size: 3.5rem; }
+
+    .wa-float { width: 52px; height: 52px; bottom: 1.25rem; right: 1.25rem; }
+    .wa-float:hover { transform: scale(1.05); }
+    .wa-float svg { width: 24px; height: 24px; }
+
+    .footer { padding: 3rem 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">Loli<span>Cup</span></a>
+    <ul class="nav-links">
+      <li><a href="#beneficios">Beneficios</a></li>
+      <li><a href="#como-usar">Cómo usar</a></li>
+      <li><a href="#garantia">Garantía</a></li>
+      <li><a href="#preguntas">FAQ</a></li>
+      <li><a href="#comprar" class="btn btn-primary" style="padding:0.5rem 1.2rem;font-size:0.75rem;">Comprar</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#beneficios" onclick="closeMenu()">Beneficios</a>
+  <a href="#como-usar" onclick="closeMenu()">Cómo usar</a>
+  <a href="#garantia" onclick="closeMenu()">Garantía</a>
+  <a href="#preguntas" onclick="closeMenu()">FAQ</a>
+  <a href="#comprar" onclick="closeMenu()">Comprar</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="ship-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Envío gratis a todo Honduras
+        </div>
+        <h1>Viví tu regla <em>sin frenos</em></h1>
+        <p class="hero-desc">
+          12 horas sin preocuparte. Sin químicos, sin escapes, sin gastar de más. Te la ponés en la mañana y te acompaña todo el día.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-stat">
+            <div class="hero-stat-number">12h</div>
+            <div class="hero-stat-label">Protección continua</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">5</div>
+            <div class="hero-stat-label">Años de vida útil</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">0</div>
+            <div class="hero-stat-label">Químicos</div>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="#comprar" class="btn btn-primary btn-large">Quiero la mía</a>
+          <span class="hero-price-tag">L. 450</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-panel">
+          <object
+            data="img/hero-panel.svg"
+            type="image/svg+xml"
+            aria-label="LoliCup — Copa menstrual de silicona grado médico"
+          >
+            <img
+              src="img/producto-copa-1x.webp"
+              srcset="img/producto-copa-1x.webp 1x, img/producto-copa.webp 2x"
+              alt="LoliCup — Copa menstrual de silicona grado médico"
+            >
+          </object>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section class="section" id="beneficios" style="background:var(--surface);">
+  <div class="container">
+    <span class="section-tag">Beneficios</span>
+    <h2>Lo que ganás con LoliCup</h2>
+    <p class="section-subtitle">Con LoliCup pagás una vez y listo. Sin vueltas.</p>
+    <div class="benefits-grid" style="margin-top:2.5rem;">
+      <div class="benefit-card">
+        <span class="benefit-icon">🕐</span>
+        <h3>12 horas de protección</h3>
+        <p>Te la ponés en la mañana y durás todo el día tranquila. Perfecta para dormir, entrenar, nadar o lo que tengás planeado.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">💰</span>
+        <h3>Ahorro real</h3>
+        <p>L. 450 una sola vez. En 5 años son más de L. 15,000 que se quedan en tu bolsillo. Para vos.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🩺</span>
+        <h3>Sin químicos</h3>
+        <p>Silicona grado médico, 100% hipoalergénica. Libre de BPA, látex y ftalatos. Nada más.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🌱</span>
+        <h3>Cero residuos</h3>
+        <p>A lo largo de tu vida podrías desechar más de 11,000 toallas o tampones. Con LoliCup no generás ni uno.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-visual">
+        <div class="img-square feature-img-wrap">
+          <img
+            src="img/producto-lifestyle-1-1x.webp"
+            srcset="img/producto-lifestyle-1-1x.webp 1x, img/producto-lifestyle-1.webp 2x"
+            alt="LoliCup — Diseñada para tu cuerpo"
+            loading="lazy"
+          >
+        </div>
+      </div>
+      <div>
+        <span class="section-tag">Características</span>
+        <h2>Pensada en vos</h2>
+        <ul class="feature-list" style="margin-top:1.5rem;">
+          <li><span><strong>Silicona grado médico</strong>Hipoalergénica, libre de BPA, látex y ftalatos. Aprobada FDA.</span></li>
+          <li><span><strong>Capacidad de 25 ml</strong>Ideal para flujo moderado a abundante. 3× más que un tampón.</span></li>
+          <li><span><strong>Borde ultrafino</strong>Sello perfecto sin molestias. No vas a sentir que la traes puesta.</span></li>
+          <li><span><strong>Tallo ajustable</strong>Córtalo a la medida que necesites. El ajuste es tuyo.</span></li>
+          <li><span><strong>Orificios de liberación</strong>Rompen el vacío para una extracción fácil y segura.</span></li>
+          <li><span><strong>Funda de algodón incluida</strong>Para guardarla limpia entre ciclos.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Steps -->
+<section class="section" id="como-usar" style="background:var(--surface);">
+  <div class="container" style="text-align:center;">
+    <span class="section-tag">Así de fácil</span>
+    <h2>Así de simple</h2>
+    <p class="section-subtitle" style="margin:0.75rem auto 2.5rem;">La primera vez te toma 5 minutos. Después lo hacés en segundos.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Esteriliza</h3>
+        <p>Hiérvela 5 minutos antes del primer uso de cada ciclo. Así de simple.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Dobla e inserta</h3>
+        <p>Dóblala en C, insértala inclinada. Se abre sola y forma un sello natural.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Vacía y repite</h3>
+        <p>Cada 12 horas la retiras, la vacías, la enjuagas y listo. Sin misterio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison -->
+<section class="section">
+  <div class="container">
+    <span class="section-tag">Comparación</span>
+    <h2>Comparalo vos misma</h2>
+    <p class="section-subtitle">Costo real a 5 años. La diferencia habla sola.</p>
+    <div style="overflow-x:auto;margin-top:2rem;">
+      <table class="compare-table">
+        <tr><th></th><th class="compare-highlight">LoliCup</th><th>Tampones</th><th>Toallas</th></tr>
+        <tr><td>Protección</td><td class="compare-highlight"><strong>12 horas</strong></td><td>4–6 horas</td><td>4–6 horas</td></tr>
+        <tr><td>Costo total 5 años</td><td class="compare-highlight"><strong>L. 450</strong></td><td>L. 15,000+</td><td>L. 12,000+</td></tr>
+        <tr><td>Químicos</td><td class="compare-highlight"><span class="compare-check">✓ Libre</span></td><td><span class="compare-x">✗ Blanqueadores</span></td><td><span class="compare-x">✗ Plásticos</span></td></tr>
+        <tr><td>Residuos generados</td><td class="compare-highlight"><span class="compare-check">✓ Cero</span></td><td><span class="compare-x">✗ 2,400/año</span></td><td><span class="compare-x">✗ 2,200/año</span></td></tr>
+        <tr><td>Síndrome shock tóxico</td><td class="compare-highlight"><span class="compare-check">✓ Sin riesgo</span></td><td><span class="compare-x">✗ Riesgo</span></td><td><span class="compare-check">✓ Sin riesgo</span></td></tr>
+        <tr><td>Dormir con ella</td><td class="compare-highlight"><span class="compare-check">✓ Seguro</span></td><td><span class="compare-x">✗ No recomendado</span></td><td><span class="compare-check">✓ Seguro</span></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section" style="background:var(--surface);">
+  <div class="container" style="text-align:center;">
+    <span class="section-tag">Testimonios</span>
+    <h2>Lo que dicen quienes ya la probaron</h2>
+    <div class="testimonial-visual-wrapper">
+      <div class="testimonial-img-wrap img-square">
+        <img
+          src="img/producto-lifestyle-2-1x.webp"
+          srcset="img/producto-lifestyle-2-1x.webp 1x, img/producto-lifestyle-2.webp 2x"
+          alt="Mujer usando LoliCup — Libertad y comodidad"
+          loading="lazy"
+        >
+      </div>
+    </div>
+    <div class="testimonials-grid" style="margin-top:2rem;text-align:left;">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Me costó animarme, no te voy a mentir. Pero después del primer ciclo ya no quise volver a las toallas. Me siento más fresca y ni se siente."</p>
+        <div class="author">María G., San Pedro Sula</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Yo entreno y nado casi todos los días, y con la copa es otra vida. Cero accidentes. Hasta duermo con ella puesta y amanezco tranquila."</p>
+        <div class="author">Daniela R., Tegucigalpa</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Lo que más me gusta es no estar comprando toallas cada mes. Hice cuentas y de verdad se ahorra un montón. Ya llevo 8 meses con la mía."</p>
+        <div class="author">Sofía L., La Ceiba</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="preguntas">
+  <div class="container">
+    <span class="section-tag">FAQ</span>
+    <h2>Resuelve tus dudas</h2>
+    <div class="faq-list" style="margin-top:2rem;">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Duele al insertarla?</button><div class="faq-a">No. La silicona es suave y flexible. Al doblarla el diámetro se reduce. Una vez dentro no se siente. Si hay molestia, ajusta la posición o recorta el tallo.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cómo sé qué talla necesito?</button><div class="faq-a">Dos tallas. S: menores de 30 sin partos vaginales. M: mayores de 30 o con partos. Si tu flujo es muy abundante, la M también funciona.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Puedo usarla si tengo DIU?</button><div class="faq-a">Sí, con cuidado. Rompe el sello pellizcando la base antes de tirar. No jales del tallo. Consulta con tu ginecólogo si tienes dudas.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Se puede dormir con ella?</button><div class="faq-a">Sí. Es una de sus grandes ventajas. Hasta 12 horas de protección. Duerme tranquila.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cómo se limpia fuera de casa?</button><div class="faq-a">Vacía y limpia con papel. Lava con agua y jabón neutro cuando llegues a casa. Hierve 5 minutos al inicio y fin de cada ciclo.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Tiene garantía?</button><div class="faq-a">1 año contra defectos de fabricación. Si algo sale mal con tu LoliCup, te la cambiamos sin costo.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Warranty -->
+<section class="section" id="garantia" style="background:var(--surface);text-align:center;">
+  <div class="container">
+    <span class="section-tag">Confianza</span>
+    <h2>Garantía LoliCup</h2>
+    <p class="section-subtitle" style="margin:0.75rem auto 2rem;">Tranquila. Si no es para vos, te devolvemos tu dinero.</p>
+    <div class="warranty-seal" style="margin:0 auto;">
+      <div style="text-align:center;">
+        <div style="font-size:2.2rem;font-weight:700;color:var(--sage-deep);">1</div>
+        <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.06em;color:var(--sage);">AÑO</div>
+        <div style="font-size:0.6rem;font-weight:500;color:var(--sage);letter-spacing:0.08em;">GARANTÍA</div>
+      </div>
+    </div>
+    <div class="warranty-features">
+      <div class="warranty-feature">✓ Cambio sin costo por defectos</div>
+      <div class="warranty-feature">✓ Devolución en 7 días</div>
+      <div class="warranty-feature">✓ Atención personalizada por WhatsApp</div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta-section" id="comprar">
+  <div class="container">
+    <span class="section-tag" style="background:rgba(255,255,255,0.2);color:#fff;">Pago único</span>
+    <h2>Tu LoliCup está a un mensaje</h2>
+    <p>Envío gratis a todo Honduras. Pedila hoy y en pocos días está en tu puerta.</p>
+    <div class="cta-price">L. 450</div>
+    <a href="https://wa.me/50496965620?text=Hola%20LoliCup%2C%20quiero%20comprar%20una%20copa%20menstrual" class="btn btn-white btn-large" target="_blank" rel="noopener">Comprar por WhatsApp</a>
+    <p class="cta-note">¿Dudas? Escríbenos a lolicuphn@gmail.com</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">Loli<span>Cup</span></div>
+      <ul class="footer-links">
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#como-usar">Cómo usar</a></li>
+        <li><a href="#garantia">Garantía</a></li>
+        <li><a href="#preguntas">FAQ</a></li>
+        <li><a href="#comprar">Comprar</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">&copy; 2026 LoliCup. Hecho en Honduras.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/50496965620?text=Hola%20LoliCup%2C%20tengo%20una%20consulta" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+function closeMenu() {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// Intersection Observer for image fade-in animations
+const observerOptions = { threshold: 0.2, rootMargin: '0px 0px -30px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.feature-img-wrap, .testimonial-img-wrap').forEach(el => {
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
