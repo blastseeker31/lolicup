@@ -1,31 +1,30 @@
-# LoliCup — Copa Menstrual
+# LoliCup
 
-Landing page para **LoliCup**, copa menstrual de silicona grado médico. Producto hondureño, venta directa al consumidor.
-
-📍 **Acceso:** solo vía VPN Tailscale
+Landing page para LoliCup, copa menstrual de silicona grado médico. Producto de venta directa al consumidor en Honduras.
 
 ## Stack
 
-- **Frontend:** HTML5 + CSS3 vanilla
-- **Backend:** Python 3 con `http.server` (servidor mínimo)
-- **Despliegue:** Docker, puerto 8085
+- **Frontend:** HTML5, CSS3 vanilla
+- **Backend:** Python 3 (`http.server`)
+- **Despliegue:** Docker
 
 ## Características
 
-- Landing page one-page con diseño limpio y femenino
-- Secciones: hero, beneficios, cómo usar, comparativa, FAQ, contacto
-- Copy refinado con enfoque en beneficios reales (ahorro, salud, libertad)
-- Totalmente responsive, mobile-first
-- Sin dependencias externas de JS
-- Carga rápida, HTML + CSS puro
+- Landing page one-page con enfoque en conversión
+- Secciones: hero, beneficios, modo de uso, comparativa, FAQ
+- Diseño responsive, mobile-first
+- Sin dependencias externas de JavaScript
+- Copy optimizado para venta directa
 
-## Levantar local
+## Instalación
 
 ```bash
+git clone git@github.com:blastseeker31/lolicup.git
 cd lolicup
 python3 server.py
-# Abrir http://localhost:8085
 ```
+
+Abrir `http://localhost:8085` en el navegador.
 
 ## Docker
 
@@ -41,13 +40,6 @@ lolicup/
 ├── server.py                # Servidor HTTP mínimo
 ├── img/                     # Imágenes de producto
 ├── copy-refinado.md         # Guía de copywriting
-├── copy-audit.md            # Auditoría de copy previa
 ├── research-competitors.md  # Investigación de competencia
 └── docker-compose.yml
 ```
-
-## Notas
-
-- El sitio corre solo en Tailscale, sin dominio público.
-- El copy está refinado para conversión: lenguaje claro, beneficios tangibles, objeción-manejo.
-- La investigación de competencia está en `research-competitors.md`.
